@@ -1,0 +1,23 @@
+class Solution(object):
+    def isValid(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+
+        # replace valid parenthesis with "" empty string.
+        # if in the end the string is empty, It's valid. Else its not
+
+
+        n = len(s)
+        if n == 0:
+            return True
+
+        if n % 2 != 0:
+            return False
+
+        while '()' in s or '{}' in s or '[]' in s:
+            s = s.replace('{}','').replace('()','').replace('[]','')
+
+
+        return s == ""
