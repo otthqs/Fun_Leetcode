@@ -4,9 +4,12 @@ class Solution:
         :type n: int
         :rtype: int
         """
+
+
         # catlan数组的计算和应用
         # dp[n] = dp[1]*dp[n-1] + d[2]*dp[n-2] + dp[3]*dp[n-3]
 
+        #或者理解成为一道动态规划题
         if n==0 or n == 1:
             return n
 
@@ -19,4 +22,4 @@ class Solution:
 
             dp.append(temp)
 
-        return dp[-1]Unique Binary Search Trees
+        return dp[-1]
