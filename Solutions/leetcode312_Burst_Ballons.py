@@ -19,8 +19,6 @@ class Solution:
                 for k in range(i,j+1):
                     dp[i][j] = max(dp[i][j], dp[i][k-1] + dp[k+1][j] + nums[k] * nums[i-1] * nums[j+1])
 
-        print(dp)
-
         return dp[1][Length]
 
 
