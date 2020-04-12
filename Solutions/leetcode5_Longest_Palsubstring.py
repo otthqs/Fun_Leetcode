@@ -5,6 +5,52 @@ class Solution:
         :rtype: str
         """
 
+        class Solution:
+    def longestPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+
+        #Manacher算法
+        #首先处理string
+        def helper(s):
+            res = '^'
+            for i in range(len(s)):
+                res = res + '#' + s[i]
+            return res + '#$'
+
+        s_adj = helper(s)
+
+        p = [0] * len(s_adj)
+        C,R = 0,0
+        for i in range(1,len(s_adj)-1):
+            i_mirror = 2 * C - i
+            if R > i:
+                p[i] = min(p[i_mirror], R - i)
+            else:
+                p[i] = 0
+            while s_adj[i + p[i] + 1] == s_adj[i - p[i] -1]:
+                p[i] += 1
+        if i + p[i] > R:
+            R = i + p[i]
+            C = i
+        Center = 0
+        Maxlen = 0
+        for i in range(len(p)):
+            if p[i] > Maxlen:
+                Maxlen = p[i]
+                Center = i
+        start = (Center - Maxlen) //2
+        return s[start:start+Maxlen]
+            
+
+
+
+
+
+
+
         # 从一个字符的中间开始到两边，如果每一个字符都相等话，那么它就是一个回文
         # 定义helper函数来实现这个功能
 
